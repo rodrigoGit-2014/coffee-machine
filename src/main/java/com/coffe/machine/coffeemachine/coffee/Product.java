@@ -16,4 +16,12 @@ public class Product {
     public void addRecipe(Recipe recipe) {
         recipes.add(recipe);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Recipe> getRecipes() {
+        return recipes;
+    }
 }

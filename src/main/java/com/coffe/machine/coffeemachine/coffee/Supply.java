@@ -16,4 +16,17 @@ public class Supply {
     public void addSupply(Ingredient ingredient, int quantity) {
         suppliers.put(ingredient, quantity);
     }
+
+    public Integer getQuantity(Ingredient ingredient) {
+        return suppliers.get(ingredient);
+    }
+
+    public void setQuantity(Ingredient ingredient, Integer qty) {
+        Integer newQty = suppliers.get(ingredient) - qty;
+        suppliers.put(ingredient, newQty);
+    }
+
+    public Map<Ingredient, Integer> getSuppliers() {
+        return suppliers;
+    }
 }

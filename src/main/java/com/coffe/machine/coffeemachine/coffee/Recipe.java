@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class Recipe {
     private String name;
-    private Map<Ingredient, Integer> ingredients;
 
+    private Map<Ingredient, Integer> ingredients;
 
     public Recipe(String recipeName) {
         name = recipeName;
@@ -14,6 +14,14 @@ public class Recipe {
     }
 
     public void addIngredient(Ingredient ingredient, Integer quantity) {
-        ingredients.put(ingredient,quantity);
+        ingredients.put(ingredient, quantity);
+    }
+
+    public Map<Ingredient, Integer> getIngredients() {
+        return ingredients;
+    }
+
+    public String getName() {
+        return name;
     }
 }
