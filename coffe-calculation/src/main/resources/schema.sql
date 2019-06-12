@@ -1,35 +1,34 @@
-create table dispenser
-(
-   id integer not null,
-   name varchar(255) not null,
-   passport_number varchar(255) not null,
-   primary key(id)
-);
+CREATE TABLE dispenser (
+  id_dispenser INT NOT NULL,
+  name VARCHAR(45) NULL,
+  address VARCHAR(255) NULL,
+  PRIMARY KEY (id_dispenser));
 
-create table supply{
-   id_dispenser integer not null,
-   id_ingredient integer not null,
-   quantity integer not null,
-   primary key (id_dispenser,id_ingredient)
-};
+CREATE TABLE ingredient (
+  id_ingredient INT NOT NULL,
+  name VARCHAR(45) NULL,
+  PRIMARY KEY (id_ingredient));
 
-create table ingredient {
-    id integer not null,
-    name varchar(255) not null,
-    primary key(id)
-};
+CREATE TABLE supplies (
+  id_ingredient INT NOT NULL,
+  id_dispenser INT NOT NULL,
+  quantity INT NULL,
+  PRIMARY KEY (id_ingredient, id_dispenser));
 
-create table product {
-  id integer not null,
-  name varchar(255) not null,
-  primary key(id)
-};
+CREATE TABLE product (
+  id_product INT NOT NULL,
+  name VARCHAR(45) NULL,
+  PRIMARY KEY (id_product));
 
-create table recipe{
- id_product integer not null,
- id_ingredient integer not null,
- name varchar(255) not null,
- quantity integer,
- primary key (id_product,id_ingredient )
-};
+CREATE TABLE recipe (
+  id_recipe INT NOT NULL,
+  name VARCHAR(45) NULL,
+  PRIMARY KEY (id_recipe));
 
+CREATE TABLE recipe_detail (
+  id_recipe_dtl INT NOT NULL,
+  id_product_fk INT NULL,
+  id_ingredient_fk INT NULL,
+  quantity INT NULL,
+  id_recipe_fk INT NULL,
+  PRIMARY KEY (id_recipe_dtl));
