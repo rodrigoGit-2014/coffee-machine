@@ -1,6 +1,8 @@
 package com.coffee.calculation.coffecalculation.controller;
 
-import com.coffee.calculation.coffecalculation.dao.Dispenser;
+import com.coffee.calculation.coffecalculation.proxy.DBManagerProxy;
+import com.coffee.calculation.coffecalculation.response.Dispenser;
+import com.coffee.calculation.coffecalculation.response.DispenserResponse;
 import com.coffee.calculation.coffecalculation.response.PrepareOrder;
 import com.coffee.calculation.coffecalculation.services.OrderCalculationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +16,13 @@ import java.util.List;
 public class OrderCalculationController {
 
     @Autowired
-    private OrderCalculationService orderCalculationService;
+    private DBManagerProxy dbManagerProxy;
 
     @GetMapping("/preparation/dispenser/{dispenserId}/recipe/{recipeId}")
-    public PrepareOrder prepareOrder(@PathVariable int dispenserId, @PathVariable int recipeId) {
-        return orderCalculationService.prepareOrder();
+    public Dispenser prepareOrder(@PathVariable int dispenserId, @PathVariable int recipeId) {
+        Dispenser dispenserResponse =  dbManagerProxy.findDispenserById(dispenserId);
+        return dispenserResponse;
     }
 
-   @GetMapping("/dispensers")
-   public List<Dispenser> findAllDispenser(){
-        List<Dispenser> dispensers =  orderCalculationService.getAllDispenser();
-        return dispensers;
-   }
+
 }
